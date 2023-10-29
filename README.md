@@ -8,7 +8,9 @@ Integrantes:
 + Diego Enciso
 + Jean Paul Melendez Cabezas
 
+## Github repo: https://github.com/loaspra/softwareII-lab-SOA
 
+## Repo del front end: https://github.com/loaspra/weather-julisa.git
 
 ## Servidor: (API gateway)
 
