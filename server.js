@@ -1,7 +1,14 @@
 const express = require('express');
 const axios = require('axios');
-const PORT = 8000;
+const PORT = 8100;
 const app = express();
+
+// Middleware to set Access-Control-Allow-Origin header
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 
 // First step, get lat and lon of a place
 const URI_LOCATION = "https://nominatim.openstreetmap.org/search"; // Params: q=place&format=json (returns array of objects, get the first one)
@@ -46,6 +53,7 @@ app.get('/weather/:place', async (req, res) => {
             weather: weatherResponse.data,
             nearby: restaurants
         });
+        console.log(`Weather and nearby restaurants for ${place} sent`);
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
