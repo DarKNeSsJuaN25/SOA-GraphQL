@@ -7,6 +7,50 @@ Integrantes:
 + Miguel Angel Alvarado
 + Jean Paul Melendez Cabezas
 
+Tenemos que crear el *buildSchema* en el codigo:
+const schema = buildSchema(`
+  type WeatherData {
+    latitude: Float
+    longitude: Float
+    generationtime_ms: Float
+    utc_offset_seconds: Int
+    timezone: String
+    timezone_abbreviation: String
+    elevation: Int
+    daily_units: DailyUnits
+    daily: Daily
+  }
+
+  type DailyUnits {
+    time: String
+    temperature_2m_max: String
+  }
+
+  type Daily {
+    time: [String]
+    temperature_2m_max: [Float]
+  }
+
+  type Location {
+    latitude: Float
+    longitude: Float
+  }
+
+  type Restaurant {
+    name: String
+    location: Location
+  }
+
+  type Query {
+    getWeatherAndNearby(place: String): WeatherAndNearby
+  }
+
+  type WeatherAndNearby {
+    weather: WeatherData
+    nearby: [Restaurant]
+  }
+`);
+
 Para acceder al *GraphQL*, tenemos que ir a la ruta: *localhost:8100/graphql*.
 Ahi, formulamos la query de salida, la cual es la siguiente:
 ![image](https://github.com/DarKNeSsJuaN25/SOA-GraphQL/assets/68095284/83191236-21f1-46ec-9dc5-d030af6492a9)
