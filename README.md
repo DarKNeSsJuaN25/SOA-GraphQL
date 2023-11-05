@@ -1,4 +1,4 @@
-# softwareII-lab-SOA
+# SOA-GraphQL
 
 Integrantes:
 
